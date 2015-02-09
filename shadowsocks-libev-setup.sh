@@ -9,7 +9,6 @@ apt-get update
 apt-get install -y iptables-persistent
 
 # Enable UFW forwarding and open TCP port 2375
-ufw enable
 sed -i 's/\(DEFAULT_FORWARD_POLICY\)="DROP"/\1="ACCEPT"/g' /etc/default/ufw
 ufw allow 2375/tcp
 ufw allow 8388/tcp
@@ -43,7 +42,7 @@ cat > /etc/shadowsocks-libev/config.json <<EOF
     "workers": 1
 }
 EOF
-
+vim /etc/shadowsocks-libev/config.json
 # Pull pre-built docker images
 docker pull shichaoan/shadowsocks-libev
 docker run --restart=always -d -p 8388:8388 --name shadowsocks-libev \
