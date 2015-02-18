@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Setup shadowsocks-libev in docker on Ubuntu 14.04
+# Setup shadowsocks-libev in docker on Ubuntu 14.04 with UFW
 # Run as root
 # Update /etc/shadowsocks-libev/config.json as your need
 
@@ -11,6 +11,7 @@ apt-get install -y iptables-persistent
 # Enable UFW forwarding and open TCP port 2375
 ufw enable
 sed -i 's/\(DEFAULT_FORWARD_POLICY\)="DROP"/\1="ACCEPT"/g' /etc/default/ufw
+# allow more ports according to your scenario
 ufw allow 22/tcp
 ufw allow 2375/tcp
 ufw allow 8388/tcp
