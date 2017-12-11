@@ -17,7 +17,7 @@ ufw allow 2375/tcp
 ufw allow 8388/tcp
 ufw reload
 
-# Save iptables ruls
+# Save iptables rules
 service iptables-persistent save
 
 # Install docker and dependencies
